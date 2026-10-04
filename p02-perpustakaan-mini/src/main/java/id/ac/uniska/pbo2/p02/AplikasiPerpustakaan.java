@@ -11,6 +11,14 @@ public class AplikasiPerpustakaan {
         perpus.tambah(new Buku("B002", "Clean Code", 2008, "Robert C. Martin"));
         perpus.tambah(new Majalah("M001", "Majalah Teknologi Kita", 2026, "Agustus"));
 
+        perpus.tambah(new Skripsi(
+            "S001",
+            "Sistem Informasi Perpustakaan Berbasis Web",
+            2026,
+            "Muhammad Fairuzizuan",
+            "Teknik Informatika"
+        ));
+        
         Anggota siti = new Anggota("2410010123", "Siti Rahmah");
         Anggota budi = new Anggota("2410010456", "Budi Santoso");
 
@@ -26,6 +34,21 @@ public class AplikasiPerpustakaan {
 
         cetakKembali(perpus, "B002", 2);
         cetakKembali(perpus, "M001", 3);
+        System.out.println();
+        
+        String kataKunci = "code";
+        var hasilPencarian = perpus.cariJudul(kataKunci);
+
+        System.out.println("Hasil pencarian \"" + kataKunci + "\": "
+                + hasilPencarian.size() + " koleksi");
+
+        for (Koleksi koleksi : hasilPencarian) {
+            System.out.println(koleksi);
+        }
+
+        System.out.println();
+        cetakPinjam(perpus, "S001", siti);
+
         System.out.println();
 
         System.out.println("Koleksi tersedia: " + perpus.jumlahTersedia()

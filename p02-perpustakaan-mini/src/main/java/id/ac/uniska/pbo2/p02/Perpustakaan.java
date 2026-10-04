@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Locale;
 /**
 * Mengelola daftar koleksi dan data peminjam.
 */
@@ -63,4 +64,19 @@ public class Perpustakaan {
     public List<Koleksi> getDaftarKoleksi() {
         return List.copyOf(daftarKoleksi);
     }
+    
+    public List<Koleksi> cariJudul(String kataKunci) {
+        List<Koleksi> hasil = new ArrayList<>();
+        String kataKunciKecil = kataKunci.toLowerCase(Locale.ROOT);
+
+        for (Koleksi koleksi : daftarKoleksi) {
+            String judulKecil = koleksi.getJudul().toLowerCase(Locale.ROOT);
+
+            if (judulKecil.contains(kataKunciKecil)) {
+                hasil.add(koleksi);
+            }
+        }
+
+        return hasil;
+    }   
 }
